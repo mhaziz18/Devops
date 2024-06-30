@@ -4,8 +4,9 @@ pipeline {
     environment {
         NEXUS_REPO = 'maven-releases' 
         NEXUS_URL = 'http://192.168.33.10:8081/repository'
-        DOCKER_HUB_USERNAME = credentials('docker-hub-username')
-        DOCKER_HUB_PASSWORD = credentials('docker-hub-password')
+        DOCKER_HUB_USERNAME = 'lassouedaziz'
+        DOCKER_HUB_PASSWORD = 'Aziz12124' 
+
     }
 
     stages {
