@@ -111,7 +111,7 @@ stage('Collect Jenkins Metrics') {
         stage('Start MySQL Container') {
             steps {
                 script {
-                    def gitRepo = checkout([$class: 'GitSCM', branches: [[name: 'rayan-guedri']], userRemoteConfigs: [[url: 'https://github.com/mhaziz18/Devops.git']]])
+                    def gitRepo = checkout([$class: 'GitSCM', branches: [[name: 'main']], userRemoteConfigs: [[url: 'https://github.com/mhaziz18/Devops.git']]])
                     def dockerComposeFilePath = 'docker-compose.yml'
                     sh "docker-compose -f ${dockerComposeFilePath} up -d"
                 }
