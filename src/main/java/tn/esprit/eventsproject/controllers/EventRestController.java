@@ -1,5 +1,5 @@
 package tn.esprit.eventsproject.controllers;
-
+package tn.esprit.eventsproject; 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.eventsproject.entities.Event;
