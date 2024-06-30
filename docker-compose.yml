@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  achat-app:
+    image: metis9/alpine:1.0.0
+    ports:
+      - "8089:8082"
+
+  mysql-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: eventsProject
+      MYSQL_USER: root
+      MYSQL_PASSWORD: aziz
+    ports:
+      - "3307:3306"
