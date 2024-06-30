@@ -20,4 +20,4 @@ services:
       MYSQL_USER: aziz
       MYSQL_PASSWORD: aziz
     ports:
-      - "3307:3306"
+      - "3306:3306"
