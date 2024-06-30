@@ -9,7 +9,7 @@ import tn.esprit.eventsproject.entities.Event;
 import tn.esprit.eventsproject.entities.Logistics;
 import tn.esprit.eventsproject.entities.Participant;
 import tn.esprit.eventsproject.services.IEventServices;
-
+import tn.esprit.eventsproject.web.EventRestController;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
