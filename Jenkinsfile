@@ -90,7 +90,8 @@ pipeline {
                     def grafanaDashboardURL = 'http://192.168.33.10:3000/d/haryan-jenkins/jenkins3a-performance-and-health-overview?orgId=1'
 
                     // Run curl command and capture the HTTP status code
-                    def curlExitCode = sh(script: "curl -o /dev/null -s -w '%{http_code}' -L $grafanaDashboardURL", returnStatus: true)
+                    def curlOutput = sh(script: "curl -o /dev/null -s -w '%{http_code}' -L $grafanaDashboardURL", returnStdout: true).trim()
+                    def curlExitCode = curlOutput.toInteger()
 
                     // Check the HTTP status code and print appropriate message
                     if (curlExitCode == 200) {
@@ -103,6 +104,7 @@ pipeline {
                 }
             }
         }
+
 
         stage('Start MySQL Container') {
             steps {
