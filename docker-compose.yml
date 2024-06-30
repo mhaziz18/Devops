@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-  achat-app:
-    image: metis9/alpine:1.0.0
+  event-app:
+    image: lassouedaziz/event:latest
     ports:
       - "8089:8082"
 
