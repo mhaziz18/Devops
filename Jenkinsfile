@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     nexusArtifactUploader artifacts: [[
-                        artifactId: 'event',
+                        artifactId: 'eventsProject',
                         classifier: '',
                         file: 'target/*.jar',
                         type: 'jar']],
