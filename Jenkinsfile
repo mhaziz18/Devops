@@ -108,7 +108,14 @@ pipeline {
             }
         }
 
-
+        stage('Start MySQL Container') {
+            steps {
+                script {
+                    def dockerComposeFilePath = 'docker-compose.yml'
+                    sh "docker-compose -f ${dockerComposeFilePath} up -d"
+                }
+            }
+        }
 
 
         stage('Build Docker Image') {
@@ -131,15 +138,6 @@ pipeline {
                         sh "docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD"
                         sh "docker push $dockerImageName"
                     }
-                }
-            }
-        }
-
-        stage('Start MySQL Container') {
-            steps {
-                script {
-                    def dockerComposeFilePath = 'docker-compose.yml'
-                    sh "docker-compose -f ${dockerComposeFilePath} up -d"
                 }
             }
         }
