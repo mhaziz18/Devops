@@ -3,7 +3,9 @@ pipeline {
 
     environment {
         NEXUS_REPO = 'maven-releases' 
-        NEXUS_URL = 'http://192.168.33.10:8081/repository'  
+        NEXUS_URL = 'http://192.168.33.10:8081/repository'
+        DOCKER_HUB_USERNAME = credentials('docker-hub-username')
+        DOCKER_HUB_PASSWORD = credentials('docker-hub-password')
     }
 
     stages {
@@ -129,14 +131,16 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
-                script {
-                    def dockerImageName = 'lassouedaziz/event:latest'
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+                    script {
+                        def dockerImageName = 'lassouedaziz/event:latest'
+                        sh "docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD"
                         sh "docker push $dockerImageName"
                     }
                 }
             }
         }
+
 
 
         
