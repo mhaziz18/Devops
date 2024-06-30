@@ -42,7 +42,7 @@ pipeline {
                     nexusArtifactUploader artifacts: [[
                         artifactId: 'eventsProject',
                         classifier: '',
-                        file: 'target/*.jar',
+                        file: 'target/eventsProject-1.0.0-SNAPSHOT.jar',
                         type: 'jar']],
                         credentialsId: 'nexus-server',
                         groupId: 'tn.esprit.rh',
