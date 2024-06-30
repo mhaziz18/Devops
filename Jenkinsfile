@@ -118,7 +118,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def dockerImageName = 'metis9/alpine:1.0.0'
+                    def dockerImageName = 'lassouedaziz/event:latest'
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                         def dockerImage = docker.build dockerImageName
                         dockerImage.push()
@@ -130,7 +130,7 @@ pipeline {
         stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
-                    def dockerImageName = 'metis9/alpine:1.0.0'
+                    def dockerImageName = 'lassouedaziz/event:latest'
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
                         sh "docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD"
                         sh "docker push $dockerImageName"
@@ -139,15 +139,7 @@ pipeline {
             }
         }
 
-        stage('Calculate Facture') {
-            steps {
-                script {
-                    def montantFacture = 100.0
-                    def montantRemise = 20.0
-                    def difference = montantFacture - montantRemise
-                    echo "MontantFacture - MontantRemise = ${difference}"
-                }
-            }
+
         }
     }
 }
