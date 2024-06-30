@@ -4,7 +4,7 @@ services:
   event-app:
     image: lassouedaziz/event:latest
     ports:
-      - "8089:8082"
+      - "8089:8089"
 
   mysql-db:
     image: mysql:5.7
