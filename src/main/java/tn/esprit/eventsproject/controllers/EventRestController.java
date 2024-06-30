@@ -1,12 +1,11 @@
 package tn.esprit.eventsproject.controllers;
-package tn.esprit.eventsproject; 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.eventsproject.entities.Event;
 import tn.esprit.eventsproject.entities.Logistics;
 import tn.esprit.eventsproject.entities.Participant;
 import tn.esprit.eventsproject.services.IEventServices;
-
+import tn.esprit.eventsproject.services.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
 @RequestMapping("event")
 @RestController
 public class EventRestController {
-    private final IEventServices eventServices;
+    private final IEventServices eventServices = null;
 
     @PostMapping("/addPart")
     public Participant addParticipant(@RequestBody Participant participant){

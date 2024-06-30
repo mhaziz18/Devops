@@ -23,5 +23,9 @@ public class Logistics implements Serializable {
     boolean reserve;
     float prixUnit;
     int quantite;
+	public boolean isReserve() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

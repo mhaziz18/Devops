@@ -16,15 +16,16 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 @Slf4j
 @RequiredArgsConstructor
 @Service
 public class EventServicesImpl implements IEventServices{
 
-    private final EventRepository eventRepository;
-    private final ParticipantRepository participantRepository;
-    private final LogisticsRepository logisticsRepository;
+    private final EventRepository eventRepository = null;
+    private final ParticipantRepository participantRepository = null;
+    private final LogisticsRepository logisticsRepository = null;
 
     @Override
     public Participant addParticipant(Participant participant) {
@@ -70,7 +71,7 @@ public class EventServicesImpl implements IEventServices{
           eventRepository.save(event);
       }
       else{
-          event.getLogistics().add(logistics);
+         // event.getLogistics().add(logistics);
       }
         return logisticsRepository.save(logistics);
     }
@@ -81,13 +82,13 @@ public class EventServicesImpl implements IEventServices{
 
         List<Logistics> logisticsList = new ArrayList<>();
         for (Event event:events){
-            if(event.getLogistics().isEmpty()){
+            if(((Optional<Participant>) event.getLogistics()).isEmpty()){
 
                 return null;
             }
 
             else {
-                Set<Logistics> logisticsSet = event.getLogistics();
+                Set<Logistics> logisticsSet = (Set<Logistics>) event.getLogistics();
                 for (Logistics logistics:logisticsSet){
                     if(logistics.isReserve())
                         logisticsList.add(logistics);
@@ -104,15 +105,15 @@ public class EventServicesImpl implements IEventServices{
     // eventRepository.findAll();
         float somme = 0f;
         for(Event event:events){
-            log.info(event.getDescription());
-            Set<Logistics> logisticsSet = event.getLogistics();
-            for (Logistics logistics:logisticsSet){
-                if(logistics.isReserve())
-                    somme+=logistics.getPrixUnit()*logistics.getQuantite();
-            }
-            event.setCout(somme);
-            eventRepository.save(event);
-            log.info("Cout de l'Event "+event.getDescription()+" est "+ somme);
+            //log.info(event.getDescription());
+         //   Set<Logistics> logisticsSet = event.getLogistics();
+          //  for (Logistics logistics:logisticsSet){
+          //      if (logistics.isReserve())
+           //         somme+=logistics.getPrixUnit()*logistics.getQuantite();
+         //   }
+         //   event.setCout(somme);
+         //   eventRepository.save(event);
+         //   log.info("Cout de l'Event "+event.getDescription()+" est "+ somme);
 
         }
     }

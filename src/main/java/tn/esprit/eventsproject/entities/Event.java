@@ -26,5 +26,21 @@ public class Event implements Serializable {
     Set<Participant> participants;
     @OneToMany(fetch = FetchType.EAGER)
     Set<Logistics> logistics;
+	public Object getLogistics() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setLogistics(Set<Logistics> logisticsSet) {
+		// TODO Auto-generated method stub
+		
+	}
+	public Set<Participant> getParticipants() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public Object getDescription() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
