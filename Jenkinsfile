@@ -108,14 +108,7 @@ pipeline {
         }
 
 
-        stage('Start MySQL Container') {
-            steps {
-                script {
-                    def dockerComposeFilePath = 'docker-compose.yml'
-                    sh "docker-compose -f ${dockerComposeFilePath} up -d"
-                }
-            }
-        }
+
 
         stage('Build Docker Image') {
             steps {
@@ -141,7 +134,14 @@ pipeline {
             }
         }
 
-
+        stage('Start MySQL Container') {
+            steps {
+                script {
+                    def dockerComposeFilePath = 'docker-compose.yml'
+                    sh "docker-compose -f ${dockerComposeFilePath} up -d"
+                }
+            }
+        }
 
         
     }
