@@ -132,7 +132,6 @@ pipeline {
                 script {
                     def dockerImageName = 'lassouedaziz/event:latest'
                     docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        sh "docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD"
                         sh "docker push $dockerImageName"
                     }
                 }
