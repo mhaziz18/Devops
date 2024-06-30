@@ -28,16 +28,18 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                sh 'mvn clean verify sonar:sonar \
-  -Dsonar.projectKey=event \
-  -Dsonar.projectName='event' \
-  -Dsonar.host.url=http://192.168.33.10:9000 \
-  -Dsonar.login=sqp_3f4acbe98d7c91125bbbdc02df38031ceb8d1381
-'
-            }
+stage('SonarQube Analysis') {
+    steps {
+        script {
+            sh '''mvn clean verify sonar:sonar \
+              -Dsonar.projectKey=event \
+              -Dsonar.projectName='event' \
+              -Dsonar.host.url=http://192.168.33.10:9000 \
+              -Dsonar.login=sqp_3f4acbe98d7c91125bbbdc02df38031ceb8d1381'''
         }
+    }
+}
+
 
         stage('Publish Artifacts to Nexus') {
             steps {
