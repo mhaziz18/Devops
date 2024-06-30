@@ -89,12 +89,16 @@ pipeline {
                 script {
                     def grafanaDashboardURL = 'http://192.168.33.10:3000/d/haryan-jenkins/jenkins3a-performance-and-health-overview?orgId=1'
 
+                    // Run curl command and capture the HTTP status code
                     def curlExitCode = sh(script: "curl -o /dev/null -s -w '%{http_code}' -L $grafanaDashboardURL", returnStatus: true)
 
+                    // Check the HTTP status code and print appropriate message
                     if (curlExitCode == 200) {
                         echo "Successfully curled Grafana dashboard."
                     } else {
                         echo "Failed to curl Grafana dashboard. HTTP status code: $curlExitCode"
+                        currentBuild.result = 'FAILURE'  // Mark the build as failed
+                        error "Failed to curl Grafana dashboard. HTTP status code: $curlExitCode"
                     }
                 }
             }
