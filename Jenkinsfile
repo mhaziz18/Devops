@@ -42,7 +42,7 @@ pipeline {
                     nexusArtifactUploader artifacts: [[
                         artifactId: 'eventsProject',
                         classifier: '',
-                        file: 'target/eventsProject-1.0.0-SNAPSHOT.jar',
+                        file: 'target/eventsProject-1.0.jar',
                         type: 'jar']],
                         credentialsId: 'nexus-server',
                         groupId: 'tn.esprit.rh',
@@ -50,7 +50,7 @@ pipeline {
                         nexusVersion: 'nexus3',
                         protocol: 'http',
                         repository: 'maven-releases/',
-                        version: '1.0.0-SNAPSHOT'
+                        version: '1.0'
 
                 }
             }
